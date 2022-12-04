@@ -1,7 +1,7 @@
 create table if not exists cdm.dm_settlement_report (
 id serial not null,
-restauranr_id varchar(255) not null,
-restauranr_name varchar(255) not null,
+restaurant_id varchar(255) not null,
+restaurant_name varchar(255) not null,
 settlement_date date not null,
 orders_count int not null,
 orders_total_sum numeric(14,2) not null,
