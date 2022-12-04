@@ -9,4 +9,3 @@ orders_bonus_payment_sum numeric(14,2) not null,
 orders_bonus_granted_sum numeric(14,2) not null,
 order_processing_fee numeric(14,2) not null,
 restaraunt_reward_sum numeric(14,2) not null);
-)
