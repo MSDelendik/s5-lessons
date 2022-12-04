@@ -1,4 +1,4 @@
-create table cdm.dm_settlement_report (
+create table if not exists cdm.dm_settlement_report (
 id serial not null,
 restauranr_id varchar(255) not null,
 restauranr_name varchar(255) not null,
