@@ -1,0 +1,1 @@
+alter table cdm.dm_settlement_report add constraint date_check check (settlement_date >= '2022-01-01' and settlement_date < '2500-01-01' );
