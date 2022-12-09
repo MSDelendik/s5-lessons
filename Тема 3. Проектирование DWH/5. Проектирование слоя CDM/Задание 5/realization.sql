@@ -1,0 +1,1 @@
+alter table cdm.dm_settlement_report add constraint dm_settlement_report_unique  unique (restaurant_id,settlement_date);
