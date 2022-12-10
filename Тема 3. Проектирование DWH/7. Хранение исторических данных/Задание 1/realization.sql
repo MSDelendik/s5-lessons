@@ -1,2 +1,2 @@
-UPDATE public.clients SET "name" = 'arthur_dent'
+UPDATE public.clients SET login = 'arthur_dent'
 WHERE client_id = 42;
