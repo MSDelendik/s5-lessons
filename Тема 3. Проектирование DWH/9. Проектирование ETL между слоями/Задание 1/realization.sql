@@ -26,4 +26,4 @@ WHERE order_status = 'CLOSED'
 GROUP BY 1,2,3
 ON CONFLICT ON CONSTRAINT dm_settlement_report_unique
 DO UPDATE 
-SET res
+SET restaurant_name = EXCLUDED.restaurant_name;
