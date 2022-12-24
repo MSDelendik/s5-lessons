@@ -40,4 +40,19 @@ class PgSaver:
                     "val": str_val,
                     "update_ts": update_ts
                 }
+            ),
+            cur.execute(
+                """
+                    INSERT INTO stg.ordersystem_orders(object_id, object_value, update_ts)
+                    VALUES (%(id)s, %(val)s, %(update_ts)s)
+                    ON CONFLICT (object_id) DO UPDATE
+                    SET
+                        object_value = EXCLUDED.object_value,
+                        update_ts = EXCLUDED.update_ts;
+                """,
+                {
+                    "id": id,
+                    "val": str_val,
+                    "update_ts": update_ts
+                }
             )

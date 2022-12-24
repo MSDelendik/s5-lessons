@@ -8,6 +8,8 @@ from examples.stg.order_system_restaurants_dag.restaurant_loader import Restaura
 from examples.stg.order_system_restaurants_dag.restaurant_reader import RestaurantReader
 from examples.stg.order_system_restaurants_dag.user_loader import UserLoader
 from examples.stg.order_system_restaurants_dag.user_reader import UserReader
+from examples.stg.order_system_restaurants_dag.order_loader import OrderLoader
+from examples.stg.order_system_restaurants_dag.order_reader import OrderReader
 from lib import ConnectionBuilder, MongoConnect
 
 log = logging.getLogger(__name__)
@@ -70,8 +72,27 @@ def sprint5_example_stg_order_system_restaurants():
 
     user_loader = load_users()
 
+    @task()
+    def load_orders():
+        # Инициализируем класс, в котором реализована логика сохранения.
+        pg_saver = PgSaver()
+
+        # Инициализируем подключение у MongoDB.
+        mongo_connect = MongoConnect(cert_path, db_user, db_pw, host, rs, db, db)
+
+        # Инициализируем класс, реализующий чтение данных из источника.
+        collection_reader = OrderReader(mongo_connect)
+
+        # Инициализируем класс, в котором реализована бизнес-логика загрузки данных.
+        loader = OrderLoader(collection_reader, dwh_pg_connect, pg_saver, log)
+
+        # Запускаем копирование данных.
+        loader.run_copy()
+
+    order_loader = load_orders()
+
     # Задаем порядок выполнения. Таск только один, поэтому зависимостей нет.
-    [restaurant_loader, user_loader]  # type: ignore
+    [restaurant_loader, user_loader, order_loader]  # type: ignore
 
 
 order_stg_dag = sprint5_example_stg_order_system_restaurants()  # noqa
