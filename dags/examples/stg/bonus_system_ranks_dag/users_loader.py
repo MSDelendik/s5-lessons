@@ -89,7 +89,7 @@ class UserLoader:
 
             # Сохраняем объекты в базу dwh.
             for user in load_queue:
-                self.stg.insert_rank(conn, user)
+                self.stg.insert_user(conn, user)
 
             # Сохраняем прогресс.
             # Мы пользуемся тем же connection, поэтому настройка сохранится вместе с объектами,
