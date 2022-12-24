@@ -29,12 +29,18 @@ def sprint5_example_stg_bonus_system_ranks_dag():
         rest_loader = RankLoader(origin_pg_connect, dwh_pg_connect, log)
         rest_loader.load_ranks()  # Вызываем функцию, которая перельет данные.
 
+    @task(task_id="users_load")
+    def load_users():
+        # создаем экземпляр класса, в котором реализована логика.
+        rest_loader = UserLoader(origin_pg_connect, dwh_pg_connect, log)
+        rest_loader.load_users()  # Вызываем функцию, которая перельет данные.
+
     # Инициализируем объявленные таски.
     ranks_dict = load_ranks()
-
+    users_dict = load_users()
     # Далее задаем последовательность выполнения тасков.
     # Т.к. таск один, просто обозначим его здесь.
-    ranks_dict  # type: ignore
+    [ranks_dict, users_dict]  # type: ignore
 
 
 stg_bonus_system_ranks_dag = sprint5_example_stg_bonus_system_ranks_dag()
