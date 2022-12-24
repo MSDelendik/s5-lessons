@@ -1,6 +1,7 @@
 from logging import Logger
 from typing import List
 from datetime import datetime
+import json
 
 from examples.stg import EtlSetting, StgEtlSettingsRepository
 from lib import PgConnect
@@ -14,7 +15,7 @@ class EventObj(BaseModel):
     id: int
     event_ts: datetime
     event_type: str
-    event_value: dict
+    event_value: json
 
 
 class EventsOriginRepository:
