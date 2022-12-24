@@ -3,6 +3,7 @@ import logging
 import pendulum
 from airflow.decorators import dag, task
 from examples.stg.bonus_system_ranks_dag.ranks_loader import RankLoader
+from examples.stg.bonus_system_ranks_dag.users_loader import UserLoader
 from lib import ConnectionBuilder
 
 log = logging.getLogger(__name__)
