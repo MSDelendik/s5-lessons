@@ -17,7 +17,7 @@ args = {
     'email': ['student@example.com'],
     'email_on_failure': False,
     'email_on_retry': False,
-    'retries': 1
+    'retries': 0
 }
 
 business_dt = '{{ ds }}'
@@ -33,6 +33,6 @@ with DAG(
     update_dm_users = PostgresOperator(
         task_id='update_dm_users',
         postgres_conn_id=postgres_conn_id,
-        sql="sql/dn_users.sql")
+        sql="sql/dm_users.sql")
 
 update_dm_users
