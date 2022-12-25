@@ -17,9 +17,11 @@ class UserObj(BaseModel):
 
 
 class UsersStgRepository:
+    def __init__(self, pg: PgConnect) -> None:
+        self._db = pg
 
-    def list_users(self, conn: PgConnect, user_threshold: int, limit: int) -> List[UserObj]:
-        with self._db.client().cursor(row_factory=class_row(UserObj)) as cur:
+    def list_users(self, user_threshold: int, limit: int) -> List[UserObj]:
+        with self._db.cursor(row_factory=class_row(UserObj)) as cur:
             cur.execute(
                 """
                     SELECT
