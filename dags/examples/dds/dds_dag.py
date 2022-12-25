@@ -27,6 +27,7 @@ with DAG(
         default_args=args,
         description='Provide default dag for sprint5',
         catchup=False,
+        start_date=datetime.today()
 ) as dag:
 
     update_d_item_table = PostgresOperator(
