@@ -30,10 +30,9 @@ with DAG(
         start_date=datetime.today()
 ) as dag:
 
-    update_d_item_table = PostgresOperator(
+    update_dm_users = PostgresOperator(
         task_id='update_dm_users',
         postgres_conn_id=postgres_conn_id,
         sql="sql/dn_users.sql")
-(
+
 update_dm_users
-)
