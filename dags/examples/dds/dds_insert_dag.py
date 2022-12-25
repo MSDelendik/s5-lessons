@@ -33,6 +33,4 @@ def sprint5_example_dds_insert_dag():
     # Т.к. таск один, просто обозначим его здесь.
     users_dict  # type: ignore
 
-
-dds_bonus_system_ranks_dag = sprint5_example_stg_bonus_system_ranks_dag()
 dds_insert_dag = sprint5_example_dds_insert_dag()
