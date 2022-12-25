@@ -25,6 +25,7 @@ business_dt = '{{ ds }}'
 with DAG(
         'dds_insert',
         default_args=args,
+        schedule_interval='0/15 * * * *',  # Задаем расписание выполнения дага - каждый 15 минут.
         description='Provide default dag for sprint5',
         catchup=False,
         start_date=datetime.today()
