@@ -34,6 +34,11 @@ with DAG(
     update_dm_users = PostgresOperator(
         task_id='update_dm_users',
         postgres_conn_id=postgres_conn_id,
-        sql="dm_users.sql")
+        sql="dm_users.sql"),
 
-update_dm_users
+    update_dm_restaurants = PostgresOperator(
+        task_id='update_dm_restaurants',
+        postgres_conn_id=postgres_conn_id,
+        sql="dm_restaurants.sql")
+
+[update_dm_users, update_dm_restaurants]
