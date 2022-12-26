@@ -56,4 +56,4 @@ with DAG(
         postgres_conn_id=postgres_conn_id,
         sql="dm_orders.sql")
 
-([update_dm_users, update_dm_restaurants, update_dm_timestamps] >> [update_dm_products, update_dm_orders])
+([update_dm_users, update_dm_restaurants, update_dm_timestamps], [update_dm_products, update_dm_orders])
