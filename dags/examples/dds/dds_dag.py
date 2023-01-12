@@ -55,9 +55,15 @@ with DAG(
         task_id='update_dm_orders',
         postgres_conn_id=postgres_conn_id,
         sql="dm_orders.sql")
+
     update_fct_product_sales = PostgresOperator(
         task_id='update_fct_product_sales',
         postgres_conn_id=postgres_conn_id,
         sql="fct_product_sales.sql")
 
-([update_dm_users, update_dm_restaurants, update_dm_timestamps], [update_dm_products, update_dm_orders], update_fct_product_sales)
+    update_cdm_settlement_report = PostgresOperator(
+        task_id='update_cdm_settlement_report',
+        postgres_conn_id=postgres_conn_id,
+        sql="cdm_settlement_report.sql")
+
+([update_dm_users, update_dm_restaurants, update_dm_timestamps], [update_dm_products, update_dm_orders], [update_fct_product_sales], [update_cdm_settlement_report])
