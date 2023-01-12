@@ -12,7 +12,7 @@ SELECT
 b.restaurant_id, 
 c.restaurant_name, 
 concat_ws('-', d."year",d."month", d."day")::date  AS settlement_date, 
-sum("count") AS orders_count, 
+count(distinct order_id) AS orders_count, 
 sum(total_sum) AS orders_total_sum, 
 sum(bonus_payment) AS orders_bonus_payment_sum, 
 sum(bonus_grant) AS orders_bonus_granted_sum, 
