@@ -15,4 +15,5 @@ object_value::JSON ->> 'final_status' AS order_status,
 FROM stg.ordersystem_orders) t1
 INNER JOIN dds.dm_restaurants b ON t1.restaurant_id=b.restaurant_id
 INNER JOIN dds.dm_users c ON t1.user_id=c.user_id
-INNER JOIN dds.dm_timestamps d ON t1.date_time=d.ts;
+INNER JOIN dds.dm_timestamps d ON t1.date_time=d.ts
+where order_key not in (select order_key from dds.dm_orders);
