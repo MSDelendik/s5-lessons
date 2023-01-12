@@ -30,6 +30,6 @@ bonus_grant
 FROM table_1 t1
 INNER JOIN dds.dm_products dp ON dp.product_id = t1.product_id 
 INNER JOIN dds.dm_orders dor ON dor.order_key = t1.order_id
-WHERE dp.id NOT IN (SELECT product_id FROM ds.fct_product_sales)
-AND dor.id NOT IN (SELECT order_id FROM ds.fct_product_sales)
+WHERE dp.id NOT IN (SELECT product_id FROM dds.fct_product_sales)
+AND dor.id NOT IN (SELECT order_id FROM dds.fct_product_sales)
 GROUP BY 3,4,5,6,7;
