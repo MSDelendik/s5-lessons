@@ -16,4 +16,4 @@ left JOIN dds.dm_restaurants dr ON a.object_id = dr.restaurant_id
 WHERE object_value::JSON ->> 'menu' IS NOT NULL
 )t1,
 json_to_recordset(t1.json_1) as (_id TEXT, category TEXT, name TEXT, price NUMERIC(16,2))
-;
+WHERE _id NOT IN (SELECT product_id FROM dds.dm_products);
