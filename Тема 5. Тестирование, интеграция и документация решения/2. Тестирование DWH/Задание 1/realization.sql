@@ -1,6 +1,5 @@
-INSERT INTO public_test.testing_result
+INSERT INTO public_test.testing_result (test_date_time, test_name, test_result)
 SELECT
-0 AS id,
 current_timestamp AS test_date_time,
 'test_01' AS test_name,
 CASE WHEN count(*)>0 THEN FALSE ELSE TRUE END AS test_result
