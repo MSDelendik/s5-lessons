@@ -16,4 +16,6 @@ AND a.orders_bonus_payment_sum=b.orders_bonus_payment_sum
 AND a.orders_bonus_granted_sum=b.orders_bonus_granted_sum
 AND a.order_processing_fee=b.order_processing_fee
 AND a.restaurant_reward_sum=b.restaurant_reward_sum
-WHERE a.id IS NULL OR b.id IS NULL)t1
+WHERE a.id IS NULL OR b.id IS NULL)t1;
+
+select * from public_test.testing_result;
