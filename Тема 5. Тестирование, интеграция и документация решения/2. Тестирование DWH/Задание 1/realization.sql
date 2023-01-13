@@ -18,4 +18,4 @@ AND a.order_processing_fee=b.order_processing_fee
 AND a.restaurant_reward_sum=b.restaurant_reward_sum
 WHERE a.id IS NULL OR b.id IS NULL)t1;
 
-select * from public_test.testing_result;
+select test_date_time, test_name, test_result from public_test.testing_result;
